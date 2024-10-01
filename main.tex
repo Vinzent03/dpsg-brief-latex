@@ -1,0 +1,82 @@
+\documentclass[11pt, parskip=full]{scrlttr2}
+\usepackage{carlito}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[placement=top, angle=5]{background}
+\usepackage{xcolor}
+\usepackage[automark,headsepline=.3pt,footsepline=.3pt]{scrlayer-scrpage}
+\usepackage[a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm,includeheadfoot]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{blindtext}
+\renewcommand*\familydefault{\sfdefault}
+
+\backgroundsetup{contents={\includegraphics[width=6.05cm, height=6.12cm]{lilie.pdf}}, scale=1, opacity=0.5, position={-0.7cm,-1.8cm}}
+
+\definecolor{dpsgbeige}{RGB}{199,189,173}
+\definecolor{dpsgblue}{RGB}{0,48,86}
+
+
+
+\setkomavar{location}{
+    \begin{minipage}{0.3\textwidth}
+
+        \fontsize{8}{10}\selectfont
+
+        \textbf{Stammesvorstand}\\
+
+        
+        \begin{tabularx}{\linewidth}{l>{\raggedright\arraybackslash}X }
+        Name &  Max Musterman\\
+    \end{tabularx}
+\end{minipage}
+}
+
+\makeatletter
+\@setplength{locvpos}{12cm} % Adjust the vertical position from the top
+\@setplength{lochpos}{2,1cm} % Adjust the horizontal position form the right
+\@setplength{refvpos}{8.5cm} % Adjust the vertical position of the subject
+\makeatother
+
+
+\addtokomafont{pageheadfoot}{\small\upshape\color{white}}% <- footer linie weiß damit man sie nicht sieht
+
+\setkomavar{subject}{Betreff}
+\begin{document}
+
+\begin{letter}{Adresse}
+	% ----- Media -----
+	\tikz [remember picture, overlay] %
+	\node [shift={(-1cm,-1cm)}] at (current page.north east) %
+	[anchor=north east] %
+	{\includegraphics[width=6cm]{logo.png}};
+
+	\tikz [remember picture, overlay]
+	\node [shift={(-198mm,-124mm)}] at (current page.north east) %
+	[anchor=north east] %
+	{\includegraphics{start.png}};
+
+	\tikz [remember picture, overlay]
+	\node [shift={(-11mm, 7mm)}] at (current page.south east) %
+	[anchor=south east] %
+	{\includegraphics{end.png}};
+	% ----- Media -----
+
+
+	\opening{Anrede,}
+
+	\begin{minipage}{0.73\textwidth}
+		\input{titelseite.tex}
+	\end{minipage}
+
+	\pagebreak
+
+	\input{inhalt.tex}
+
+	\closing{Gut Pfad,}
+
+\end{letter}
+\end{document}
